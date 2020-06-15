@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue入门程序</title>
+    <script src="../js/vue/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <a v-bind:href="url"><span v-text="name"></span></a>
+    <input type="text" v-model="num1">+
+    <input type="text" v-model="num2">=
+    <span v-text="result"></span>
+    <button v-on:click="change">计算</button><br/>
+    <li v-for="(item,index) in list" :key="index" v-if="index%2==0">
+        {{index}}--{{item}}
+    </li>
+    <li v-for="(value,key) in user">
+        {{key}}--{{value}}
+    </li>
+    <li v-for="(item,index) in userList" :key="index">
+        <div v-if="item.user.uname=='heima'" style="background: chartreuse">
+            {{index}}--{{item.user.uname}}--{{item.user.age}}
+        </div>
+        <div v-else="">
+            {{index}}--{{item.user.uname}}--{{item.user.age}}
+        </div>
+    </li>
+</div>
+</body>
+<script>
+    var VM = new Vue({
+        el:"#app",
+        data:{
+            name:"传智播客",
+            num1:0,
+            num2:0,
+            result:0,
+            url:"http://www.xuecheng.com",
+            list:[1,2,3,4,4],
+            user:{uname:'itcast1',age:10},
+            userList:[
+                {user:{uname:'itcast2',age:11}},
+                {user:{uname:'heima',age:12}}
+            ]
+        },
+        methods:{
+            change:function () {
+                this.result=Number.parseInt(this.num1)+Number.parseInt(this.num2);
+            }
+        }
+    });
+</script>
+</html>
