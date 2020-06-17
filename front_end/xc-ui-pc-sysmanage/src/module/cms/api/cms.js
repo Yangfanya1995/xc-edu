@@ -12,4 +12,12 @@ export const page_list=(page,size,params)=>{
 export  const site_list=()=>{
   return http.requestQuickGet(apiUrl+'/cms/site/list')
 }
+//模板查询
+export const template_list=()=>{
+  return http.requestQuickGet(apiUrl+'/cms/template/list')
+}
+//添加页面
+export  const page_add=params=>{
+  return http.requestPost(apiUrl+'/cms/page/add',params)
+}
 
