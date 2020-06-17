@@ -2,7 +2,7 @@ import http from "./../../../base/api/public"
 import querystring from "querystring"
 let sysConfig = require('@/../config/sysConfig')
 let apiUrl = sysConfig.xcApiUrlPre;
-//页面查询
+//页面列表查询
 export const page_list=(page,size,params)=>{
   //将json对象转成key/value对
   let query=querystring.stringify(params)
@@ -20,4 +20,11 @@ export const template_list=()=>{
 export  const page_add=params=>{
   return http.requestPost(apiUrl+'/cms/page/add',params)
 }
-
+//根据页面ID查询
+export const  page_get=id=>{
+  return http.requestQuickGet(apiUrl+'/cms/page/get/'+id)
+}
+//修改页面
+export const  page_edit=(id,params)=>{
+  return http.requestPut(apiUrl+'/cms/page/edit/'+id,params)
+}
